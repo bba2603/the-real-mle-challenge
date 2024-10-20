@@ -3,4 +3,8 @@ Pipfile
 .vscode/
 .env/
 *.pyc
-*.log
+
+# Removed so I can show what I did in the challenge
+# *.log
+# *.csv  # So we don't upload processed new files
+# *.json  # So we don't upload evaluation results

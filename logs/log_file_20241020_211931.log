@@ -1,0 +1,14 @@
+2024-10-20 21:19:31,190 - main_api - INFO - Loading model from models/model_20241020_211858.pkl
+2024-10-20 21:19:31,249 - src.model_handler - INFO - Model loaded from models/model_20241020_211858.pkl
+2024-10-20 21:19:31,256 - main_api - INFO - Data: 
+     id  accommodates        room_type  beds  bedrooms  bathrooms neighbourhood  tv  elevator  internet  latitude  longitude
+0  1001             4  Entire home/apt     2         1          2      Brooklyn   1         1         0  40.71383   -73.9658
+2024-10-20 21:19:31,256 - src.data_preparation - INFO - Training columns: Index(['neighbourhood', 'room_type', 'accommodates', 'bathrooms', 'bedrooms'], dtype='object')
+2024-10-20 21:19:31,257 - src.data_preparation - INFO - Some training data: 
+  neighbourhood        room_type  accommodates  bathrooms  bedrooms
+0      Brooklyn  Entire home/apt             4          2         1
+2024-10-20 21:19:31,259 - main_api - INFO - Data: 
+   neighbourhood  room_type  accommodates  bathrooms  bedrooms
+0              4          3             4          2         1
+2024-10-20 21:19:31,284 - main_api - INFO - Prediction: 2
+2024-10-20 21:19:31,284 - main_api - INFO - Predicted category: High

@@ -1,0 +1,44 @@
+2024-10-20 21:18:58,649 - __main__ - INFO - SRC_PATH is not set. Using default path: data/raw/listings.csv
+2024-10-20 21:18:59,438 - src.data_preprocessor - INFO - File loaded. Shape of df: (38277, 74)
+2024-10-20 21:18:59,707 - src.data_preprocessor - INFO - Data saved to data/processed/processed_listings_20241020_211858.csv
+2024-10-20 21:18:59,707 - src.data_preparation - INFO - Training columns: Index(['id', 'neighbourhood', 'property_type', 'room_type', 'latitude',
+       'longitude', 'accommodates', 'bathrooms', 'bedrooms', 'beds', 'price',
+       'category', 'tv', 'internet', 'air_conditioning', 'kitchen', 'heating',
+       'wifi', 'elevator', 'breakfast'],
+      dtype='object')
+2024-10-20 21:18:59,713 - src.data_preparation - INFO - Some training data: 
+     id neighbourhood                        property_type        room_type  latitude  longitude  accommodates  ...  internet  air_conditioning  kitchen  heating wifi  elevator  breakfast
+1  3831      Brooklyn                   Entire guest suite  Entire home/apt  40.68494  -73.95765             3  ...         0                 0        0        0    0         0          0
+3  5136      Brooklyn                   Entire rental unit  Entire home/apt  40.66265  -73.99454             4  ...         0                 0        0        0    0         0          0
+4  5178     Manhattan          Private room in rental unit     Private room  40.76457  -73.98317             2  ...         0                 0        0        0    0         0          0
+5  5203     Manhattan          Private room in rental unit     Private room  40.80380  -73.96751             1  ...         0                 0        0        0    0         0          0
+8  6872     Manhattan  Private room in condominium (condo)     Private room  40.80107  -73.94255             1  ...         0                 0        0        0    0         0          0
+
+[5 rows x 20 columns]
+2024-10-20 21:18:59,716 - src.data_preparation - INFO - Features for training: ['neighbourhood', 'room_type', 'accommodates', 'bathrooms', 'bedrooms']
+2024-10-20 21:18:59,719 - src.data_preparation - INFO - Some training data: 
+   neighbourhood  room_type  accommodates  bathrooms  bedrooms
+1              4          3             3        1.0       1.0
+3              4          3             4        1.5       2.0
+4              5          2             2        1.0       1.0
+5              5          2             1        1.0       1.0
+8              5          2             1        1.0       1.0
+2024-10-20 21:18:59,719 - src.data_preparation - INFO - Target for training: category
+2024-10-20 21:18:59,720 - src.data_preparation - INFO - Some training target: 
+1    0
+3    2
+4    0
+5    0
+8    0
+Name: category, dtype: category
+Categories (4, int64): [0 < 1 < 2 < 3]
+2024-10-20 21:18:59,722 - src.data_preparation - INFO - Data split. (X_train: (27051, 5), X_test: (4774, 5), y_train: (27051,), y_test: (4774,))
+2024-10-20 21:18:59,722 - src.model_handler - INFO - Model: RandomForestClassifier, n_estimators: 500, random_state: 0, class_weight: balanced, n_jobs: 4
+2024-10-20 21:19:00,393 - src.model_handler - INFO - Model trained successfully
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - Model evaluation completed successfully
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - Accuracy: 0.60
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - ROC AUC: 0.82
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - Feature importances: {'room_type': 0.29740225169809814, 'accommodates': 0.2675059656198863, 'neighbourhood': 0.18268132735931097, 'bathrooms': 0.14670392547854175, 'bedrooms': 0.10570652984416286}
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - Confusion matrix: [[1480, 393, 75, 7], [237, 798, 521, 55], [36, 272, 504, 179], [7, 36, 69, 105]]
+2024-10-20 21:19:00,530 - src.model_evaluator - INFO - Classification report: {'precision': {'low': 0.8409090909090909, 'mid': 0.5323549032688459, 'high': 0.4311377245508982, 'lux': 0.30346820809248554}, 'recall': {'low': 0.7570332480818415, 'mid': 0.49534450651769085, 'high': 0.508577194752775, 'lux': 0.4838709677419355}, 'f1-score': {'low': 0.7967698519515478, 'mid': 0.5131832797427652, 'high': 0.4666666666666667, 'lux': 0.37300177619893427}, 'support': {'low': 1955.0, 'mid': 1611.0, 'high': 991.0, 'lux': 217.0}}
+2024-10-20 21:19:00,582 - src.model_handler - INFO - Model saved to models/model_20241020_211858.pkl
