@@ -11,7 +11,7 @@ SRC_PATH='/path/to/source' python3 main.py
 
 2. If run with Docker:
 ```
-docker run -e SRC_PATH=<src_path> <image_id>
+docker run -e SRC_PATH=<src_path> -v $(pwd):/app -it <image_name>
 ```
 
 SRC_PATH is the path to the source data. That parameter is optional. If not provided, the default path is used: "data/raw/listings.csv". SRC_PATH has been set to be an environment variable, so it can be easily changed by the user, in case the user wants to use a different source data.
@@ -25,29 +25,42 @@ Some improvements in the code are:
 - Added comments to the code.
 - Added Unit Tests to the code.
 
+# Challenge 2 - Build an API
+
+main_api.py is the entry point of the API. It defines the API and the different endpoints. It uses one of the trained models based on the input model_path parameter. The data is inputed by the user in JSON format. The API returns the id of the listing and the predicted price category.
+
+# Challenge 3 - Dockerize your solution
+
+2 Dockerfiles are created: one for the API and one for the training code. The Dockerfile.predict is the one that is used to run the API. The Dockerfile.train is the one that is used to train the model. 
+The command to build the image is:
+```
+docker build -t <image_name> -f Dockerfile.<name> .
+```
+For example:
+```
+docker build -t predict_classifier -f Dockerfile.predict .
+```
+```
+docker build -t train_classifier -f Dockerfile.train .
+```
+
+# Code structure
 The code structure is the following:
 project_root/
 │
-├── solution/
-│   ├── config/
-│   │   ├── classifier_config.py
-│   │   └── preprocessing_config.py
-│   ├── src/
-│   │   ├── data_preparation.py
-│   │   ├── model_evaluator.py
-│   │   ├── model_handler.py
-│   │   ├── preprocessor.py
-│   │   └── setup_logger.py
-│   └── main.py
+├── config/
+│   ├── classifier_config.py
+│   └── preprocessing_config.py
 │
-├── tests/
-│   ├── test_data_preparation.py
-│   ├── test_model_evaluator.py
-│   ├── test_model_handler.py
-│   ├── test_preprocessor.py
-│   └── test_setup_logger.py
+├── src/
+│   ├── data_preparation.py
+│   ├── data_preprocessor.py
+│   ├── model_evaluator.py
+│   ├── model_handler.py
+│   └── setup_logger.py
 │
+│── main_api.py
+│── main_train.py
 │
-└── Dockerfile
-
-# Challenge 2 - Build an API
+│── Dockerfile.predict
+└── Dockerfile.train
