@@ -13,7 +13,7 @@ RENAMED_COLUMNS = {
 }
 
 FEATURE_AMENITIES = [
-    'tv', 'internet', 'air conditioning', 'kitchen',
+    'tv', 'internet', 'air_conditioning', 'kitchen',
     'heating', 'wifi', 'elevator', 'breakfast'
 ]
 

@@ -6,7 +6,7 @@ The main.py file is the entry point of the program. It loads the source data, pr
 
 1. If run from the command line:
 ```
-SRC_PATH='/path/to/source' python3 main.py
+SRC_PATH='/path/to/source' python3 main_train.py
 ```
 
 2. If run with Docker:
@@ -25,7 +25,7 @@ Some improvements in the code are:
 - Added description to the functions, classes and methods.
 - Added type hints to the code.
 - Added comments to the code.
-- Added Unit Tests to the code.
+- Added Unit Tests to the code. Tests are implemented for the classes and methods in src/ folder.
 
 
 # Challenge 2 - Build an API
@@ -72,5 +72,12 @@ project_root/
 │── main_api.py
 │── main_train.py
 │
-│── Dockerfile.predict
+├── tests/
+│   ├── test_data_preparation.py
+│   ├── test_model_evaluator.py
+│   ├── test_model_handler.py
+│   ├── test_preprocessor.py
+│   └── test_setup_logger.py
+│
+├── Dockerfile.predict
 └── Dockerfile.train
