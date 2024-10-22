@@ -53,6 +53,7 @@ To run the API:
 ```
 docker run -p 8000:8000 -it predict_classifier
 ```
+API will be accessible at http://localhost:8000/docs.
 
 # Code structure
 The code structure is the following:
